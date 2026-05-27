@@ -90,7 +90,7 @@ export function ActivityLogChangesDrawer({ open, json, logPreview, onClose }: Pr
                 ) : (
                   rows.map((row) => (
                     <tr key={row.field} className="table-row">
-                      <td className="px-5 py-3 align-top font-mono text-xs font-semibold text-[var(--text-primary)]">
+                      <td className="px-5 py-3 align-top text-xs font-semibold text-[var(--text-primary)]">
                         {row.field}
                       </td>
                       <td className="px-4 py-3 align-top">

@@ -121,7 +121,7 @@ export function ActivityLogJsonDrawer({
                 Index: {meta.index}
               </span>
             )}
-            <span className="rounded-full bg-slate-100 px-2.5 py-1 font-mono text-[var(--text-secondary)]">
+            <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[var(--text-secondary)]">
               ID: {meta.id}
             </span>
           </div>
@@ -153,7 +153,7 @@ export function ActivityLogJsonDrawer({
               </button>
             </div>
             <pre className="code-block min-h-[calc(100dvh-15rem)] max-h-[calc(100dvh-15rem)] flex-1 overflow-auto">
-              <code className="font-mono text-[13px]">{jsonText}</code>
+              <code className="text-[13px]">{jsonText}</code>
             </pre>
           </div>
         )}

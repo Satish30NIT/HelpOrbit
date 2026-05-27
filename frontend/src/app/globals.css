@@ -117,8 +117,8 @@
 @theme inline {
   --color-background: var(--bg-main);
   --color-foreground: var(--text-primary);
-  --font-sans: var(--font-inter), Inter, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-family);
+  --font-mono: var(--font-family);
 }
 
 html,
@@ -127,6 +127,22 @@ body {
   background: var(--bg-main);
   color: var(--text-primary);
   font-family: var(--font-family);
+}
+
+/* Single typeface app-wide (inputs and code default to monospace in browsers) */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: inherit;
 }
 
 /* Pointer on all interactive controls */
@@ -813,7 +829,7 @@ body {
 }
 
 .activity-field-value {
-  @apply max-w-full rounded border border-[var(--border)] bg-[var(--bg-subtle)] px-2 py-0.5 font-mono text-[11px] font-medium text-[var(--text-primary)];
+  @apply max-w-full rounded border border-[var(--border)] bg-[var(--bg-subtle)] px-2 py-0.5 text-[11px] font-medium text-[var(--text-primary)];
 }
 
 .activity-filters-row {
@@ -1116,28 +1132,12 @@ body {
   }
 }
 
-/* —— Dashboard home (full-width; no side gutters) —— */
-.app-main--dashboard {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.page-shell.page-shell--dashboard {
-  max-width: none;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  align-self: stretch;
-  min-width: 0;
-}
-
+/* —— Dashboard home —— */
 .dashboard-home {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
   width: 100%;
-  max-width: none;
-  margin: 0;
   padding-bottom: var(--space-8);
 }
 

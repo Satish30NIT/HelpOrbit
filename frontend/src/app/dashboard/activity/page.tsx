@@ -87,7 +87,7 @@ export default function ActivityLogsPage() {
         <ActivityLogList
           userId={userId}
           initialCategory={userId ? "user" : initialCategory}
-          showMetrics={!userId}
+          showMetrics={false}
           onDatePresetChange={setMetricsDatePreset}
           onItemsChange={(items) => {
             exportItemsRef.current = items;

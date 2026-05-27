@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { SidebarProvider, useSidebar } from "@/contexts/SidebarContext";
@@ -8,8 +7,6 @@ import { PageHeaderProvider } from "@/contexts/PageHeaderContext";
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const { collapsed } = useSidebar();
-  const pathname = usePathname();
-  const isDashboardHome = pathname === "/dashboard";
 
   return (
     <div className="app-bg h-screen overflow-hidden">
@@ -20,9 +17,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
         }`}
       >
         <Header />
-        <main className={`app-main${isDashboardHome ? " app-main--dashboard" : ""}`}>
-          {children}
-        </main>
+        <main className="app-main">{children}</main>
       </div>
     </div>
   );

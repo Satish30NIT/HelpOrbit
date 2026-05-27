@@ -30,7 +30,7 @@ export default function DashboardPage() {
   if (!user) return null;
 
   return (
-    <PageShell fill={false} className="page-shell--dashboard min-h-0 flex-1 overflow-y-auto">
+    <PageShell fill={false} className="min-h-0 flex-1 overflow-y-auto">
       <DashboardHome isAdmin={isAdmin} />
     </PageShell>
   );
