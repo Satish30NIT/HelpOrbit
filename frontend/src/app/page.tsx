@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { BrandedLoader } from "@/components/ui/BrandedLoader";
 
 export default function Home() {
   const router = useRouter();
@@ -14,8 +15,8 @@ export default function Home() {
   }, [loading, token, router]);
 
   return (
-    <main className="flex flex-1 items-center justify-center">
-      <p className="text-sm text-slate-500">Loading…</p>
+    <main className="app-bg flex min-h-screen items-center justify-center">
+      <BrandedLoader size="lg" message="Loading HelpOrbit…" showMessage />
     </main>
   );
 }

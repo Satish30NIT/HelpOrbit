@@ -9,6 +9,12 @@ if (missing.length) {
   );
 }
 
+function boolEnv(key, defaultValue = false) {
+  const v = process.env[key];
+  if (v === undefined || v === "") return defaultValue;
+  return ["1", "true", "yes", "on"].includes(String(v).toLowerCase());
+}
+
 module.exports = {
   port: Number(process.env.PORT) || 5000,
   nodeEnv: process.env.NODE_ENV || "development",
@@ -18,4 +24,13 @@ module.exports = {
   },
   bcryptRounds: Number(process.env.BCRYPT_ROUNDS) || 10,
   corsOrigin: process.env.CORS_ORIGIN || "*",
+  elastic: {
+    enabled: boolEnv("ELASTIC_ENABLED", false),
+    url: process.env.ELASTIC_URL || "http://localhost:9200",
+    auditLogsIndex:
+      process.env.ELASTIC_AUDIT_LOGS_INDEX ||
+      process.env.ELASTIC_COMPANY_ACTIVITY_INDEX ||
+      "helporbit-audit-logs",
+    appLogIndex: process.env.ELASTIC_INDEX || "helporbit-logs",
+  },
 };

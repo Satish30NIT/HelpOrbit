@@ -10,12 +10,27 @@ const consoleFormat = format.combine(
   })
 );
 
+const loggerTransports = [new transports.Console({ format: consoleFormat })];
+
+if (env.elastic.enabled) {
+  try {
+    const { ElasticsearchTransport } = require("winston-elasticsearch");
+    loggerTransports.push(
+      new ElasticsearchTransport({
+        level: "info",
+        clientOpts: { node: env.elastic.url },
+        index: env.elastic.appLogIndex,
+      })
+    );
+  } catch (err) {
+    console.warn("[logger] Winston Elasticsearch transport unavailable:", err.message);
+  }
+}
+
 const logger = createLogger({
   level: process.env.LOG_LEVEL || "info",
   defaultMeta: { service: "helporbit-api", env: env.nodeEnv },
-  transports: [new transports.Console({ format: consoleFormat })],
+  transports: loggerTransports,
 });
-
-// Elasticsearch transport will be wired up in Step 7 (logging integration).
 
 module.exports = logger;

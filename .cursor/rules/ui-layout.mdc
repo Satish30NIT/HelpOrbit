@@ -1,0 +1,42 @@
+---
+description: HelpOrbit modern SaaS admin UI — layout, typography, components
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# UI standards (Modern SaaS Admin)
+
+## Typography — Inter
+- Page title: `.type-page-title` (32px / 2rem semibold)
+- Section: `.type-section-title` (20px semibold)
+- Table body: `.type-table` (14px medium) — default on `.table-row`
+- Metadata: `.type-meta` (12px regular)
+
+## Layout
+- Sidebar: `--sidebar-width` (15rem), collapsed 4.5rem, collapsible
+- Header: sticky, `.header-glass`; title via `usePageHeader()`; primary actions **inline** on desktop (not a second row unless `actionsToolbar: true`)
+- Main: `.app-main` is `display: flex; flex-direction: column` (required for table pages)
+- List pages: `<DataPageLayout metrics? filters? table={...} />` with `DataTableModule` + `TablePagination`
+- Scroll pages: `<PageShell fill={false}>` (e.g. dashboard home)
+
+## Spacing — 8px grid
+`--space-1` (4px) … `--space-8` (32px). Default section gap: `--space-4`.
+
+## Radius
+- Cards / panels / tables: `--radius-card` (12px)
+- Inputs / buttons: `--radius-control` (10px)
+
+## Surfaces
+- `.card`, `.card-elevated`, `.stat-card`, `.glass-panel`, `.filter-toolbar`, `.table-shell`
+- Background: `--bg-subtle` (#F8FAFC) for app canvas
+- Transitions: `.transition-ui` (200ms ease)
+
+## Patterns
+- Stats: `.stat-card` — equal min-height, hover lift, gradient fill
+- Filters: `.filter-toolbar` + compact inputs; ghost reset via `.btn-ghost`
+- Tables: sticky `.table-head`, zebra rows, row hover
+- Sidebar nav active: left accent bar + subtle glow
+- Do not mix arbitrary Tailwind radii; use tokens above
+
+## Not yet global (add when building features)
+- Dark mode, command palette wiring, skeleton loaders, bulk table selection
